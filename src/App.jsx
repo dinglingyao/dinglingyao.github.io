@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, MotionConfig } from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -12,7 +12,7 @@ import {
   Mail,
   MessageSquareText,
   Send,
-  Triangle,
+  Flower2,
 } from "lucide-react";
 import portrait from "../me.jpeg";
 import cvFile from "../my_cv.pdf";
@@ -23,11 +23,11 @@ const Motion = motion;
 const DATA = {
   name: "Dingling Yao",
   title: "Machine Learning Researcher",
-  tagline: "AI for Science · Representation Learning · Climate & Physics",
+  tagline: "Measure. Identify. Reason.",
   thesis:
-    "I study how machine learning models represent and reason about physical systems, with a focus on scientific alignment, causality, and interpretable foundation models.",
+    "I build the foundations for machine learning to answer scientific “what if” questions: measuring the right variables, identifying stable structure, and reasoning about worlds we have never observed.",
   affiliation:
-    "ELLIS PhD researcher at ISTA and MPI-IS, working across representation learning, scientific AI, and physically grounded machine learning.",
+    "ELLIS PhD researcher at ISTA and MPI-IS · Visiting researcher at Caltech.",
   credentials: ["PhD @ ISTA", "Google PhD Fellow", "Bunny Sitter"],
   interests: [
     "Scientific AI",
@@ -35,47 +35,36 @@ const DATA = {
     "Causal Structure",
     "Climate & Physics Modeling",
   ],
-  metrics: [
-    { label: "Selected papers", value: "10" },
-    { label: "Invited talks", value: "5" },
-    { label: "Workshops led", value: "2" },
-    { label: "Research areas", value: "4" },
-  ],
   projects: [
     {
-      title: "TC-Bench: Probing Scientific Alignment",
-      contribution:
-        "Reveals the Perception–Physics Paradox: vision models can look strong under visual OOD tests while losing the physical resolution needed to distinguish scientifically meaningful cyclone structure.",
-      venue: "ICML 2026",
-      status: "Conference paper",
+      step: "01", stage: "Measure", question: "Are we measuring what matters?",
+      title: "From predictions to scientific measurements",
+      contribution: "A strong predictor is not automatically a valid scientific instrument. TC-Bench tests whether representations preserve physical distinctions; T-MEX examines whether learned proxies support the causal question we want to ask.",
+      venue: "ICML 2026 · NeurIPS 2025", status: "Measurement validity",
       accent: "from-rose-100 via-sky-50 to-white",
       links: [
-        { label: "Paper", href: "https://arxiv.org/abs/2605.24782" },
+        { label: "TC-Bench", href: "https://arxiv.org/abs/2605.24782" },
+        { label: "T-MEX", href: "https://arxiv.org/abs/2505.17708" },
       ],
     },
     {
-      title: "When can a Representation Answer Scientific Questions?",
-      contribution:
-        "Introduces T-MEX to test whether learned representations support causal and scientifically meaningful downstream questions.",
-      venue: "NeurIPS 2025",
-      status: "Conference paper",
-      accent: "from-amber-100 via-orange-50 to-white",
-      links: [
-        { label: "Paper", href: "https://arxiv.org/abs/2505.17708" },
-        { label: "Code", href: "https://github.com/shimenghuang/a-measurement-perspective-of-crl" },
-      ],
-    },
-    {
-      title: "Invariance Drives Identifiable Representations",
-      contribution:
-        "Shows how invariance principles unify causal representation learning and improve identifiability for downstream scientific tasks.",
-      venue: "ICLR 2025",
-      status: "Conference paper",
+      step: "02", stage: "Identify", question: "What structure makes recovery possible?",
+      title: "Scientific variables anchored by invariance",
+      contribution: "I study how invariance, multiple views, and dynamical structure make scientific variables identifiable. These principles connect learned representations to the underlying physical parameters and mechanisms across changing conditions.",
+      venue: "ICLR 2025 · NeurIPS 2024", status: "Identifiability & dynamics",
       accent: "from-emerald-100 via-teal-50 to-white",
       links: [
-        { label: "Paper", href: "https://arxiv.org/abs/2409.02772" },
-        { label: "Code", href: "https://arxiv.org/abs/2409.02772" },
+        { label: "Invariance", href: "https://arxiv.org/abs/2409.02772" },
+        { label: "Dynamics", href: "https://arxiv.org/abs/2405.13888" },
       ],
+    },
+    {
+      step: "03", stage: "Reason", question: "What if the world had been different?",
+      title: "Beyond observations, with mechanisms",
+      contribution: "My ongoing work combines pretrained emulators with partial knowledge of physical mechanisms to answer unseen intervention questions. Climate offers a motivating case: how would the system respond if CO₂ had followed a different path?",
+      venue: "Ongoing research", status: "Counterfactual reasoning",
+      accent: "from-violet-100 via-indigo-50 to-white",
+      links: [],
     },
   ],
   publications: [
@@ -213,22 +202,20 @@ const DATA = {
   ],
   talks: [
     {
-      date: "December 2023",
-      title: "NeurIPS 2023 Workshop on Causal Representation Learning",
-      meta: "Contributed talk · New Orleans, US",
-      href: "https://crl-workshop.github.io/",
+      date: "September 3, 2026",
+      title: "University of California, Santa Barbara",
+      meta: "Invited talk · UCSB",
     },
     {
-      date: "February 2024",
-      title: "Bellairs Workshop on Causality 2024",
-      meta: "Invited talk · Barbados",
-      href: "https://bclworkshop.github.io/",
+      date: "August 31, 2026",
+      title: "University of California, San Diego",
+      meta: "Invited talk · UCSD",
     },
     {
-      date: "March 2024",
-      title: "SIAM Conference on Uncertainty Quantification",
-      meta: "Invited talk · Trieste, Italy",
-      href: "https://www.siam.org/conferences/cm/conference/uq24",
+      date: "June 2025",
+      title: "Key Laboratory of AI Safety, Chinese Academy of Sciences",
+      meta: "Invited online talk · China",
+      href: "https://weichen-cas.github.io/",
     },
     {
       date: "March 2025",
@@ -237,10 +224,22 @@ const DATA = {
       href: "https://ist.ac.at/",
     },
     {
-      date: "June 2025",
-      title: "Key Laboratory of AI Safety, Chinese Academy of Sciences",
-      meta: "Invited online talk · China",
-      href: "https://weichen-cas.github.io/",
+      date: "March 2024",
+      title: "SIAM Conference on Uncertainty Quantification",
+      meta: "Invited talk · Trieste, Italy",
+      href: "https://www.siam.org/conferences/cm/conference/uq24",
+    },
+    {
+      date: "February 2024",
+      title: "Bellairs Workshop on Causality 2024",
+      meta: "Invited talk · Barbados",
+      href: "https://bclworkshop.github.io/",
+    },
+    {
+      date: "December 2023",
+      title: "NeurIPS 2023 Workshop on Causal Representation Learning",
+      meta: "Contributed talk · New Orleans, US",
+      href: "https://crl-workshop.github.io/",
     },
   ],
   services: [
@@ -331,11 +330,11 @@ function Nav() {
           className="group text-sm font-semibold uppercase tracking-[0.24em] text-stone-900"
         >
           <span className="inline-flex items-center gap-2">
-            <Triangle className="h-3.5 w-3.5 fill-current stroke-none transition-transform duration-300 group-hover:-rotate-12" />
+            <Flower2 className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-12" />
             {DATA.name}
           </span>
         </a>
-        <nav className="hidden items-center gap-6 text-sm text-stone-600 md:flex">
+        <nav aria-label="Main navigation" className="site-nav flex items-center gap-6 text-sm text-stone-600">
           {items.map(([label, href]) => (
             <a key={label} href={href} className="transition hover:text-stone-950">
               {label}
@@ -349,7 +348,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pb-10 pt-10 sm:pb-16 sm:pt-16">
+    <section id="top" className="pond-hero relative overflow-hidden pb-10 pt-10 sm:pb-16 sm:pt-16">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top_left,_rgba(191,219,254,0.55),_transparent_38%),radial-gradient(circle_at_80%_20%,_rgba(253,230,138,0.42),_transparent_30%),linear-gradient(180deg,_#f8f6f2_0%,_#f6f2ea_100%)]" />
       <div className={`${CONTAINER} grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]`}>
         <Motion.div
@@ -367,7 +366,7 @@ function Hero() {
             variants={fadeUp}
             className="mt-4 max-w-4xl text-5xl font-semibold tracking-tight text-stone-950 sm:text-6xl lg:text-7xl"
           >
-            Researching how machine learning becomes useful for science.
+            Counterfactual reasoning for science.
           </Motion.h1>
           <Motion.p
             variants={fadeUp}
@@ -414,13 +413,13 @@ function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="justify-self-center lg:justify-self-end"
         >
-          <div className="relative">
+          <div className="portrait-garden relative">
             <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-sky-200/70 via-amber-100/50 to-transparent blur-2xl" />
             <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/70 p-3 shadow-[0_30px_80px_rgba(64,47,20,0.14)] backdrop-blur">
               <img
                 src={portrait}
                 alt={`${DATA.name} portrait`}
-                className="h-[24rem] w-[20rem] rounded-[1.4rem] object-cover sm:h-[28rem] sm:w-[23rem]"
+                className="portrait h-[24rem] w-[20rem] rounded-[1.4rem] object-cover sm:h-[28rem] sm:w-[23rem]"
               />
             </div>
           </div>
@@ -428,14 +427,13 @@ function Hero() {
       </div>
 
       <div className={`${CONTAINER} mt-10`}>
-        <div className="grid gap-3 rounded-[2rem] border border-stone-200 bg-white/75 p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
-          {DATA.metrics.map((item) => (
-            <div key={item.label} className="rounded-[1.25rem] bg-stone-50 px-5 py-5">
-              <div className="text-3xl font-semibold tracking-tight text-stone-950">
-                {item.value}
-              </div>
-              <div className="mt-2 text-sm text-stone-600">{item.label}</div>
-            </div>
+        <div className="research-path" aria-label="Three steps to scientific reasoning">
+          {DATA.projects.map((project) => (
+            <a key={project.step} href={`#step-${project.step}`} className="path-step">
+              <span className="path-number">{project.step}</span>
+              <span><strong>{project.stage}</strong><span>{project.question}</span></span>
+              <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+            </a>
           ))}
         </div>
         <a
@@ -456,7 +454,7 @@ function About() {
       <div className={CONTAINER}>
         <SectionHeading
           eyebrow="About"
-          title="Research at the intersection of machine learning and science."
+          title="Reasoning beyond observations."
           description={DATA.affiliation}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
@@ -468,14 +466,15 @@ function About() {
             className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm"
           >
             <p className="text-lg leading-8 text-stone-700">
-              My work focuses on representations that are not only predictive, but
-              scientifically legible. I care about whether a model can support
-              explanation, intervention, and trustworthy reasoning in real physical systems.
+              Science asks about worlds we never observed. What would the climate
+              look like without human-caused warming? Answering such questions
+              requires representations that preserve scientific variables and
+              mechanisms that remain meaningful under intervention.
             </p>
             <p className="mt-5 text-base leading-7 text-stone-600">
-              Across papers, datasets, and talks, the goal is consistent: make machine
-              learning more useful for scientific discovery by aligning model structure
-              with the variables and mechanisms researchers actually care about.
+              My research connects measurement validity, causal identifiability, and
+              physical mechanisms. Together, they form a path from learning patterns
+              in observations to reasoning about how a system would respond to change.
             </p>
           </Motion.div>
 
@@ -509,6 +508,7 @@ function About() {
 function ResearchCard({ project }) {
   return (
     <Motion.article
+      id={`step-${project.step}`}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
@@ -516,15 +516,13 @@ function ResearchCard({ project }) {
       whileHover={{ y: -6 }}
       className="group overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-sm transition-shadow hover:shadow-[0_24px_60px_rgba(68,53,24,0.12)]"
     >
-      <div className={`h-44 bg-gradient-to-br ${project.accent} p-6`}>
-        <div className="flex h-full items-end justify-between rounded-[1.4rem] border border-white/60 bg-white/45 p-5 backdrop-blur-sm">
-          <div className="max-w-[13rem] text-sm font-medium text-stone-700">
-            {project.status}
-          </div>
-          <div className="rounded-full border border-stone-300 bg-white px-3 py-1 text-xs uppercase tracking-[0.2em] text-stone-600">
-            {project.venue}
-          </div>
+      <div className={`stage-header bg-gradient-to-br ${project.accent} p-6`}>
+        <div className="flex items-center justify-between">
+          <span className="stage-number">{project.step}</span>
+          <Flower2 aria-hidden="true" className="h-7 w-7 opacity-50" />
         </div>
+        <h3 className="stage-title">{project.stage}</h3>
+        <p className="mt-2 text-sm text-stone-700">{project.question}</p>
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold tracking-tight text-stone-950">
@@ -533,6 +531,7 @@ function ResearchCard({ project }) {
         <p className="mt-3 text-base leading-7 text-stone-600">
           {project.contribution}
         </p>
+        <p className="mt-4 text-xs font-medium tracking-wide text-stone-500">{project.venue}</p>
         <div className="mt-5 flex flex-wrap gap-3">
           {project.links.map((link) => (
             <a
@@ -556,8 +555,8 @@ function Research() {
       <div className={CONTAINER}>
         <SectionHeading
           eyebrow="Research"
-          title="Selected research projects."
-          description="Recent work on representation learning, scientific alignment, and physically grounded machine learning."
+          title="Measure. Identify. Reason."
+          description="Three connected steps toward counterfactual reasoning for science—from trustworthy measurements to unseen worlds."
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {DATA.projects.map((project) => (
@@ -704,9 +703,8 @@ function Talks() {
           <div className="absolute bottom-0 left-0 top-0 w-px bg-stone-200" />
           <div className="space-y-6">
             {DATA.talks.map((talk) => (
-              <Motion.a
+              <Motion.article
                 key={`${talk.date}-${talk.title}`}
-                href={talk.href}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
@@ -717,10 +715,10 @@ function Talks() {
                 <span className="absolute -left-[2.05rem] top-8 h-3 w-3 rounded-full border-4 border-[#f8f6f2] bg-stone-900" />
                 <p className="text-sm font-medium text-stone-500">{talk.date}</p>
                 <h3 className="mt-2 text-lg font-semibold text-stone-950">
-                  {talk.title}
+                  {talk.href ? <a href={talk.href} className="hover:underline">{talk.title}</a> : talk.title}
                 </h3>
                 <p className="mt-2 text-base text-stone-600">{talk.meta}</p>
-              </Motion.a>
+              </Motion.article>
             ))}
           </div>
         </div>
@@ -931,27 +929,22 @@ function Footer() {
 }
 
 export default function App() {
-  useEffect(() => {
-    document.body.classList.add("bg-[#f8f6f2]", "text-stone-950");
-    return () => {
-      document.body.classList.remove("bg-[#f8f6f2]", "text-stone-950");
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#f8f6f2] selection:bg-stone-900 selection:text-white">
+    <MotionConfig reducedMotion="user">
+    <div className="site-shell min-h-screen selection:bg-stone-900 selection:text-white">
+      <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Research />
         <Publications />
         <Talks />
         <Services />
-        <Notes />
         <Contact />
       </main>
       <Footer />
     </div>
+    </MotionConfig>
   );
 }
