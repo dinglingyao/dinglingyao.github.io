@@ -6,7 +6,7 @@ const output = new URL("../node_modules/.site-prerender/", import.meta.url);
 try {
   await build({
     build: {
-      ssr: "src/entry-server.mjsx",
+      ssr: "src/entry-server.jsx",
       outDir: output.pathname,
       emptyOutDir: true,
       rollupOptions: { output: { entryFileNames: "entry-server.mjs" } },
