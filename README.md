@@ -1,16 +1,35 @@
-# React + Vite
+# Dingling Yao’s website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite portfolio, published at https://dinglingyao.github.io/.
 
-Currently, two official plugins are available:
+## Build and deploy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Use Node.js 20.19+ or 22.12+ and run:
 
-## React Compiler
+```sh
+npm ci
+npm run build
+npm run preview
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The build generates the page content in `dist/index.html`, then React hydrates
+it in the browser. Keep motion content visible on initial render so the page
+also works before JavaScript loads. Vite generates the asset URLs for both builds.
 
-## Expanding the ESLint configuration
+The GitHub Actions workflow builds pushes to `main` or `master` and publishes
+`dist` to `gh-pages`. GitHub Pages must serve that branch from its root.
+The local Git remote currently names `DDCoan/DDCoan.github.io`; verify that
+this repository actually publishes the intended `dinglingyao.github.io` site.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Google indexing after deployment
+
+1. Add `https://dinglingyao.github.io/` as a URL-prefix property in Google Search Console and verify ownership. If using an HTML verification file, place Google's supplied file in `public/` and deploy it.
+2. Submit `https://dinglingyao.github.io/sitemap.xml` in Search Console.
+3. Inspect `https://dinglingyao.github.io/`, test the live URL, and request indexing.
+4. Check the Page indexing report for any remaining exclusions.
+
+The canonical URL, structured data, sharing metadata, and sitemap use the same
+public address. `public/robots.txt` allows crawling. Indexing and ranking are
+Google's decision; these settings do not guarantee inclusion or immediate results.
+
+Google's instructions: https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl

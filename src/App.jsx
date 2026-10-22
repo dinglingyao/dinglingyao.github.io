@@ -352,7 +352,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top_left,_rgba(191,219,254,0.55),_transparent_38%),radial-gradient(circle_at_80%_20%,_rgba(253,230,138,0.42),_transparent_30%),linear-gradient(180deg,_#f8f6f2_0%,_#f6f2ea_100%)]" />
       <div className={`${CONTAINER} grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]`}>
         <Motion.div
-          initial="hidden"
+          initial={false}
           animate="show"
           variants={{ show: { transition: { staggerChildren: 0.08 } } }}
         >
@@ -408,7 +408,7 @@ function Hero() {
         </Motion.div>
 
         <Motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="justify-self-center lg:justify-self-end"
@@ -459,7 +459,7 @@ function About() {
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <Motion.div
-            initial="hidden"
+            initial={false}
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
@@ -479,7 +479,7 @@ function About() {
           </Motion.div>
 
           <Motion.div
-            initial="hidden"
+            initial={false}
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
@@ -509,7 +509,7 @@ function ResearchCard({ project }) {
   return (
     <Motion.article
       id={`step-${project.step}`}
-      initial="hidden"
+      initial={false}
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       variants={fadeUp}
@@ -599,7 +599,7 @@ function Publications() {
                 {publicationsByYear[year].map((publication) => (
                   <Motion.div
                     key={publication.title}
-                    initial="hidden"
+                    initial={false}
                     whileInView="show"
                     viewport={{ once: true, margin: "-80px" }}
                     variants={fadeUp}
@@ -664,7 +664,7 @@ function OpenSource() {
             <Motion.a
               key={item.title}
               href={item.href}
-              initial="hidden"
+              initial={false}
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
@@ -705,7 +705,7 @@ function Talks() {
             {DATA.talks.map((talk) => (
               <Motion.article
                 key={`${talk.date}-${talk.title}`}
-                initial="hidden"
+                initial={false}
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
@@ -753,7 +753,7 @@ function Services() {
               return (
                 <Motion.div
                   key={item.title}
-                  initial="hidden"
+                  initial={false}
                   whileInView="show"
                   viewport={{ once: true, margin: "-80px" }}
                   variants={fadeUp}
@@ -767,7 +767,7 @@ function Services() {
               <Motion.a
                 key={item.title}
                 href={item.href}
-                initial="hidden"
+                initial={false}
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
@@ -797,7 +797,7 @@ function Notes() {
           {DATA.notes.map((note) => (
             <Motion.article
               key={note.title}
-              initial="hidden"
+              initial={false}
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
