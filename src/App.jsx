@@ -1,17 +1,13 @@
-import { useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
   BookOpen,
-  Copy,
   ExternalLink,
   FileText,
   Github,
   Linkedin,
   Mail,
-  MessageSquareText,
-  Send,
   Flower2,
 } from "lucide-react";
 import portrait from "../me.jpeg";
@@ -284,7 +280,7 @@ const DATA = {
       icon: Linkedin,
     },
     {
-      label: "Scholar",
+      label: "Google Scholar",
       href: "https://scholar.google.com/citations?user=vOJUvb0AAAAJ&hl=en",
       icon: BookOpen,
     },
@@ -368,6 +364,26 @@ function Hero() {
           >
             Counterfactual reasoning for science.
           </Motion.h1>
+          <nav
+            aria-label="Research profiles and CV"
+            className="mt-6 flex flex-wrap items-center gap-2"
+          >
+            {["Google Scholar", "LinkedIn", "CV", "GitHub"].map((label) => {
+              const item = DATA.socialLinks.find((link) => link.label === label);
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300/80 bg-white/75 px-4 py-2 text-sm font-medium text-stone-800 shadow-sm backdrop-blur-sm transition hover:border-stone-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stone-800"
+                >
+                  <Icon aria-hidden="true" className="h-4 w-4 text-stone-600" />
+                  {item.label}
+                  {item.label === "CV" && <span className="text-xs text-stone-500">PDF</span>}
+                </a>
+              );
+            })}
+          </nav>
           <Motion.p
             variants={fadeUp}
             className="mt-6 max-w-2xl text-lg leading-8 text-stone-700"
@@ -816,31 +832,10 @@ function Notes() {
 }
 
 function Contact() {
-  const [copied, setCopied] = useState(false);
-  const [question, setQuestion] = useState("");
-
-  async function handleCopyEmail() {
-    try {
-      await navigator.clipboard.writeText(DATA.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
-    }
-  }
-
-  function handleQuestionSubmit(event) {
-    event.preventDefault();
-
-    const subject = encodeURIComponent("Question about scientific machine learning");
-    const body = encodeURIComponent(question.trim());
-    window.location.href = `mailto:${DATA.email}?subject=${subject}&body=${body}`;
-  }
-
   return (
     <section id="contact" className="py-16 sm:py-24">
       <div className={CONTAINER}>
-        <div className="grid gap-6 rounded-[2rem] border border-stone-200 bg-stone-950 p-8 text-stone-100 shadow-[0_30px_80px_rgba(34,26,10,0.18)] sm:p-10 lg:grid-cols-[1fr_0.8fr]">
+        <div className="grid gap-6 rounded-[2rem] border border-stone-200 bg-stone-950 p-8 text-stone-100 shadow-[0_30px_80px_rgba(34,26,10,0.18)] sm:p-10">
           <div>
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-stone-400">
@@ -855,21 +850,10 @@ function Contact() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`mailto:${DATA.email}`}
-                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-stone-950 transition hover:bg-stone-200"
-              >
+              <span className="inline-flex items-center gap-2 px-1 py-3 text-sm font-medium text-stone-100">
                 <Mail className="h-4 w-4" />
                 {DATA.email}
-              </a>
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium text-stone-100 transition hover:border-white/35 hover:bg-white/5"
-              >
-                <Copy className="h-4 w-4" />
-                {copied ? "Copied" : "Copy email"}
-              </button>
+              </span>
               {DATA.socialLinks.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -886,34 +870,6 @@ function Contact() {
             </div>
           </div>
 
-          <form
-            onSubmit={handleQuestionSubmit}
-            className="rounded-[1.5rem] border border-white/15 bg-white/[0.06] p-5"
-          >
-            <label
-              htmlFor="question"
-              className="inline-flex items-center gap-2 text-sm font-medium text-stone-100"
-            >
-              <MessageSquareText className="h-4 w-4" />
-              Ask a question
-            </label>
-            <textarea
-              id="question"
-              value={question}
-              onChange={(event) => setQuestion(event.target.value)}
-              placeholder="What would you like to discuss?"
-              rows={6}
-              className="mt-4 min-h-36 w-full resize-y rounded-[1rem] border border-white/15 bg-stone-900/70 px-4 py-3 text-sm leading-6 text-stone-100 outline-none transition placeholder:text-stone-500 focus:border-white/40 focus:bg-stone-900"
-            />
-            <button
-              type="submit"
-              disabled={question.trim().length === 0}
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-stone-950 transition hover:bg-stone-200 disabled:cursor-not-allowed disabled:bg-stone-500 disabled:text-stone-300"
-            >
-              <Send className="h-4 w-4" />
-              Email question
-            </button>
-          </form>
         </div>
       </div>
     </section>
