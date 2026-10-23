@@ -24,7 +24,7 @@ const DATA = {
     "I build the foundations for machine learning to answer scientific “what if” questions: measuring the right variables, identifying stable structure, and reasoning about worlds we have never observed.",
   affiliation:
     "Final-year ELLIS PhD candidate at ISTA and MPI-IS · Google PhD Fellow · Visiting researcher at Caltech.",
-  credentials: ["Final-year ELLIS PhD", "Google PhD Fellow", "Visiting Caltech"],
+  credentials: ["Google PhD Fellow", "Caltech Visiting Researcher", "Artist", "Bunny Sitter"],
   interests: [
     "Scientific AI",
     "Representation Learning",
@@ -337,6 +337,7 @@ function Nav() {
     ["Research", "#research"],
     ["Publications", "#publications"],
     ["Talks", "#talks"],
+    ["Mentoring", "#mentoring"],
     ["Contact", "#contact"],
   ];
 
@@ -538,39 +539,30 @@ function About() {
             </div>
           </Motion.div>
         </div>
-        <div className="mt-6 grid gap-6 lg:grid-cols-3">
-          {[
-            {
-              title: "Awards & fellowships",
-              paragraphs: [
-                "Google PhD Fellowship in Machine Learning and ML Foundations, 2025–2027; Amazon–MPI Fellowship, 2022–2023.",
-                "EuroHPC Development Access Award, 2026: competitive Europe-wide GPU/HPC compute allocation.",
-                "ICLR 2024 Spotlight (top 5%), first-author paper.",
-              ],
-            },
-            {
-              title: "Teaching & mentoring",
-              paragraphs: [
-                "Co-supervised Jiale Chen (ISTA) on Scalable Mechanistic Neural Networks (ICLR 2025); mentored Kahaan Gandhi (Caltech) on counterfactual prediction for scientific emulators.",
-                "Teaching assistant for Applied Deep Learning at ISTA and undergraduate mathematics at the University of Tübingen.",
-              ],
-            },
-            {
-              title: "Scientific computing",
-              paragraphs: [
-                "Representation learning, causal inference, generative and probabilistic modeling, and scientific machine learning.",
-                "Hands-on experience with ERA5/CMIP climate data, atmospheric modeling with SpeedyWeather.jl, large-scale GPU/HPC training, and Lean for formal verification.",
-              ],
-            },
-          ].map((item) => (
-            <article key={item.title} className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
-              <h3 className="text-lg font-semibold text-stone-950">{item.title}</h3>
-              {item.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-4 text-sm leading-7 text-stone-600">{paragraph}</p>
+        <section aria-labelledby="awards-heading" className="mt-8 overflow-hidden rounded-[2rem] border border-amber-200/70 bg-gradient-to-br from-amber-50 via-white to-emerald-50 p-6 shadow-sm sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-stone-500">Recognition</p>
+          <h3 id="awards-heading" className="mt-3 text-3xl font-semibold tracking-tight text-stone-950">Awards & fellowships</h3>
+          <div className="mt-7 grid gap-8 lg:grid-cols-[1.1fr_1fr]">
+            <div className="rounded-3xl bg-stone-950 p-6 text-white sm:p-8">
+              <p className="text-sm text-amber-200">2025–2027</p>
+              <h4 className="mt-4 text-2xl font-semibold">Google PhD Fellowship</h4>
+              <p className="mt-3 text-base leading-7 text-stone-300">Machine Learning and ML Foundations</p>
+            </div>
+            <ul className="divide-y divide-stone-200">
+              {[
+                ["2026", "EuroHPC Development Access Award", "Competitive Europe-wide GPU/HPC compute allocation"],
+                ["2024", "ICLR Spotlight · Top 5%", "First-author paper"],
+                ["2022–2023", "Amazon–MPI Fellowship", "Amazon–MPI Science Hub"],
+              ].map(([year, title, detail]) => (
+                <li key={title} className="py-4 first:pt-0 last:pb-0">
+                  <p className="text-xs font-medium tracking-wide text-stone-500">{year}</p>
+                  <h4 className="mt-1 text-lg font-semibold text-stone-900">{title}</h4>
+                  <p className="mt-1 text-sm leading-6 text-stone-600">{detail}</p>
+                </li>
               ))}
-            </article>
-          ))}
-        </div>
+            </ul>
+          </div>
+        </section>
       </div>
     </section>
   );
@@ -798,6 +790,60 @@ function Talks() {
   );
 }
 
+function Mentoring() {
+  const people = [
+    {
+      name: "Jiale Chen",
+      affiliation: "ISTA · Co-supervision",
+      href: "https://research-explorer.ista.ac.at/person/4d0a9064-1ff6-11ee-9fa6-ec046c604785",
+      linkLabel: "ISTA profile",
+      project: "Scalable Mechanistic Neural Networks",
+      detail: "ICLR 2025",
+      paper: "https://arxiv.org/abs/2410.06074",
+    },
+    {
+      name: "Kahaan Gandhi",
+      affiliation: "Caltech · Mentoring",
+      href: "https://kahaan.com/",
+      linkLabel: "Personal website",
+      project: "Counterfactual Predictions in Scientific Emulators Without Controlled Experiments",
+      detail: "Preprint · 2026",
+      paper: "https://arxiv.org/abs/2610.02252",
+    },
+  ];
+  return (
+    <section id="mentoring" className="py-16 sm:py-24">
+      <div className={CONTAINER}>
+        <SectionHeading eyebrow="Teaching & mentoring" title="People & shared research." />
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {people.map((person) => (
+            <article key={person.name} className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">{person.affiliation}</p>
+              <h3 className="mt-3 text-2xl font-semibold text-stone-950">
+                <a href={person.href} className="inline-flex items-center gap-2 rounded hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
+                  {person.name}<ArrowUpRight aria-hidden="true" className="h-5 w-5" />
+                </a>
+              </h3>
+              <a href={person.href} className="mt-2 inline-block text-sm text-stone-600 underline underline-offset-4">{person.linkLabel}</a>
+              <div className="mt-6 border-t border-stone-200 pt-5">
+                <p className="text-xs font-medium text-stone-500">{person.detail}</p>
+                <a href={person.paper} className="mt-2 inline-block text-base font-medium leading-7 text-stone-800 hover:underline">{person.project}</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6 rounded-[2rem] border border-stone-200 bg-stone-50 p-6 sm:p-8">
+          <h3 className="text-lg font-semibold text-stone-950">Teaching assistant</h3>
+          <ul className="mt-4 grid gap-4 text-sm leading-7 text-stone-600 sm:grid-cols-2">
+            <li><strong className="block text-stone-800">Applied Deep Learning</strong>Institute of Science and Technology Austria</li>
+            <li><strong className="block text-stone-800">Undergraduate mathematics</strong>University of Tübingen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Services() {
   return (
     <section className="py-16 sm:py-24">
@@ -952,6 +998,7 @@ export default function App() {
         <Research />
         <Publications />
         <Talks />
+        <Mentoring />
         <Services />
         <Contact />
       </main>
