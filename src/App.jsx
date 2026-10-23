@@ -23,8 +23,8 @@ const DATA = {
   thesis:
     "I build the foundations for machine learning to answer scientific “what if” questions: measuring the right variables, identifying stable structure, and reasoning about worlds we have never observed.",
   affiliation:
-    "ELLIS PhD researcher at ISTA and MPI-IS · Visiting researcher at Caltech.",
-  credentials: ["PhD @ ISTA", "Google PhD Fellow", "Bunny Sitter"],
+    "Final-year ELLIS PhD candidate at ISTA and MPI-IS · Google PhD Fellow · Visiting researcher at Caltech.",
+  credentials: ["Final-year ELLIS PhD", "Google PhD Fellow", "Visiting Caltech"],
   interests: [
     "Scientific AI",
     "Representation Learning",
@@ -39,7 +39,7 @@ const DATA = {
       venue: "ICML 2026 · NeurIPS 2025", status: "Measurement validity",
       accent: "from-rose-100 via-sky-50 to-white",
       links: [
-        { label: "TC-Bench", href: "https://arxiv.org/abs/2605.24782" },
+        { label: "TC-Bench", href: "https://openreview.net/forum?id=wqs3uxBFRo" },
         { label: "T-MEX", href: "https://arxiv.org/abs/2505.17708" },
       ],
     },
@@ -58,12 +58,39 @@ const DATA = {
       step: "03", stage: "Reason", question: "What if the world had been different?",
       title: "Beyond observations, with mechanisms",
       contribution: "My ongoing work combines pretrained emulators with partial knowledge of physical mechanisms to answer unseen intervention questions. Climate offers a motivating case: how would the system respond if CO₂ had followed a different path?",
-      venue: "Ongoing research", status: "Counterfactual reasoning",
+      venue: "Preprint · 2026", status: "Counterfactual reasoning",
       accent: "from-violet-100 via-indigo-50 to-white",
-      links: [],
+      links: [
+        { label: "Preprint", href: "https://arxiv.org/abs/2610.02252" },
+        { label: "X post", href: "https://x.com/Dingling_Yao/status/2111089834865332293" },
+      ],
     },
   ],
   publications: [
+    {
+      year: "2026",
+      title: "Counterfactual Predictions in Scientific Emulators Without Controlled Experiments",
+      authors: [
+        "Dingling Yao",
+        "Kahaan Gandhi",
+        "Valentin Duruisseaux",
+        "Boris Bonev",
+        "Francesco Locatello",
+        "Anima Anandkumar",
+      ],
+      meta: "Preprint · arXiv:2610.02252",
+      links: [
+        { label: "Preprint", href: "https://arxiv.org/abs/2610.02252" },
+        { label: "X post", href: "https://x.com/Dingling_Yao/status/2111089834865332293" },
+      ],
+    },
+    {
+      year: "2025",
+      title: "The Third Pillar of Causal Analysis? A Measurement Perspective on Causal Representations",
+      authors: ["Dingling Yao", "S. Huang", "R. Cadei", "K. Zhang", "F. Locatello"],
+      meta: "NeurIPS 2025 · Equal contribution: D. Yao and S. Huang",
+      links: [{ label: "Paper", href: "https://arxiv.org/abs/2505.17708" }],
+    },
     {
       year: "2026",
       title: "The Perception–Physics Paradox: Probing Scientific Alignment with TC-Bench",
@@ -76,7 +103,7 @@ const DATA = {
       ],
       meta: "ICML 2026",
       links: [
-        { label: "Paper", href: "https://arxiv.org/abs/2605.24782" },
+        { label: "Paper", href: "https://openreview.net/forum?id=wqs3uxBFRo" },
       ],
     },
     {
@@ -123,7 +150,7 @@ const DATA = {
         "Julius von Kügelgen",
         "Francesco Locatello",
       ],
-      meta: "ICLR 2025 Spotlight",
+      meta: "ICLR 2024 Spotlight · Top 5%",
       links: [
         { label: "Paper", href: "https://arxiv.org/abs/2311.04056" },
         { label: "Code", href: "https://github.com/CausalLearningAI/multiview-crl" },
@@ -193,31 +220,24 @@ const DATA = {
       title: "Open-source research code",
       description:
         "Reusable implementations for causality-aware representation learning, latent forecasting, and model diagnostics.",
-      href: "https://github.com/ddcoan",
+      href: "https://github.com/dinglingyao",
     },
   ],
   talks: [
     {
-      date: "September 3, 2026",
-      title: "University of California, Santa Barbara",
-      meta: "Invited talk · UCSB",
+      date: "September 2026",
+      title: "Answering climate what-if questions from observations",
+      meta: "International Institute for Applied Systems Analysis · Laxenburg, Austria",
     },
     {
-      date: "August 31, 2026",
-      title: "University of California, San Diego",
-      meta: "Invited talk · UCSD",
+      date: "September 2026",
+      title: "Reason Beyond Observation: From Scientific Measurements to Counterfactual Worlds",
+      meta: "U.S. talk series · UC San Diego, UC Santa Barbara, Broad Institute of MIT and Harvard, Columbia University, and New York University",
     },
     {
-      date: "June 2025",
-      title: "Key Laboratory of AI Safety, Chinese Academy of Sciences",
-      meta: "Invited online talk · China",
-      href: "https://weichen-cas.github.io/",
-    },
-    {
-      date: "March 2025",
-      title: "ELLIS Tea Talk at ISTA",
-      meta: "Research talk · Austria",
-      href: "https://ist.ac.at/",
+      date: "April 2025",
+      title: "Causal Representation Learning for Scientific Discovery",
+      meta: "Institute of Computing Technology, Chinese Academy of Sciences · Remote",
     },
     {
       date: "March 2024",
@@ -243,18 +263,20 @@ const DATA = {
       period: "2025",
       role: "Lead Organizer",
       title: "CauScien Workshop at NeurIPS 2025",
+      description: "Led the inaugural workshop on causality and science, with more than 300 participants.",
       href: "https://sites.google.com/view/causcien/about",
     },
     {
-      period: "Ongoing",
-      role: "Co-Organizer",
-      title: "UniReps Speaker Series",
+      period: "2025–present",
+      role: "Organizer",
+      title: "ELLIS × UniReps Speaker Series",
+      description: "Co-organizing a series on unifying representations, with more than 100 participants.",
       href: "https://unireps.org/speaker-series/",
     },
     {
       period: "Ongoing",
       role: "Reviewer",
-      title: "NeurIPS, ICML, ICLR, TMLR, and related venues",
+      title: "NeurIPS, ICML, ICLR, KDD AI for Science Track, TMLR, Journal of Computational Physics, and IEEE TNNLS",
     },
   ],
   notes: [
@@ -271,9 +293,9 @@ const DATA = {
       body: "Papers, code, and datasets should form a coherent narrative so collaborators can understand not just results, but the research lens behind them.",
     },
   ],
-  email: "dingling.yao@ista.ac.at",
+  email: "yaodingling806@gmail.com",
   socialLinks: [
-    { label: "GitHub", href: "https://github.com/ddcoan", icon: Github },
+    { label: "GitHub", href: "https://github.com/dinglingyao", icon: Github },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/dingling-yao/",
@@ -515,6 +537,39 @@ function About() {
               ))}
             </div>
           </Motion.div>
+        </div>
+        <div className="mt-6 grid gap-6 lg:grid-cols-3">
+          {[
+            {
+              title: "Awards & fellowships",
+              paragraphs: [
+                "Google PhD Fellowship in Machine Learning and ML Foundations, 2025–2027; Amazon–MPI Fellowship, 2022–2023.",
+                "EuroHPC Development Access Award, 2026: competitive Europe-wide GPU/HPC compute allocation.",
+                "ICLR 2024 Spotlight (top 5%), first-author paper.",
+              ],
+            },
+            {
+              title: "Teaching & mentoring",
+              paragraphs: [
+                "Co-supervised Jiale Chen (ISTA) on Scalable Mechanistic Neural Networks (ICLR 2025); mentored Kahaan Gandhi (Caltech) on counterfactual prediction for scientific emulators.",
+                "Teaching assistant for Applied Deep Learning at ISTA and undergraduate mathematics at the University of Tübingen.",
+              ],
+            },
+            {
+              title: "Scientific computing",
+              paragraphs: [
+                "Representation learning, causal inference, generative and probabilistic modeling, and scientific machine learning.",
+                "Hands-on experience with ERA5/CMIP climate data, atmospheric modeling with SpeedyWeather.jl, large-scale GPU/HPC training, and Lean for formal verification.",
+              ],
+            },
+          ].map((item) => (
+            <article key={item.title} className="rounded-[2rem] border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
+              <h3 className="text-lg font-semibold text-stone-950">{item.title}</h3>
+              {item.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="mt-4 text-sm leading-7 text-stone-600">{paragraph}</p>
+              ))}
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -762,6 +817,7 @@ function Services() {
                 <h3 className="mt-3 text-lg font-semibold text-stone-950">
                   {item.title}
                 </h3>
+                {item.description && <p className="mt-3 text-sm leading-6 text-stone-600">{item.description}</p>}
               </div>
             );
 
